@@ -77,4 +77,15 @@ public class Project {
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
+
+    private Person projectOwner;
+
+    @ManyToOne
+    public Person getProjectOwner() {
+        return projectOwner;
+    }
+
+    public void setProjectOwner(Person projectOwner) {
+        this.projectOwner = projectOwner;
+    }
 }

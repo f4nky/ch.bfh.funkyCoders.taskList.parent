@@ -4,6 +4,8 @@
     <persistence-unit name="ch.bfh.funkyCoders.taskList.domain">
         <class>ch.bfh.funkyCoders.taskList.model.Project</class>
         <class>ch.bfh.funkyCoders.taskList.model.Task</class>
+        <class>ch.bfh.funkyCoders.taskList.model.Person</class>
+        <class>ch.bfh.funkyCoders.taskList.model.Tag</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>

@@ -8,6 +8,8 @@ import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -17,19 +19,25 @@ import java.util.ArrayList;
 public class CreateIT {
 
 	@Test
-	public void test() {
+	public void test() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
         Project project = new Project();
         project.setName("Project 1");
         project.setCosts(25000.00);
+        project.setStartDate(sdf.parse("2014-01-01"));
+        project.setEndDate(sdf.parse("2015-01-31"));
 
         Task task1 = new Task();
         task1.setTitle("P1 - Task 1");
         task1.setDescription("Lorem ipsum");
+        task1.setStatus(Task.Status.OPEN);
         task1.setProject(project);
 
         Task task2 = new Task();
         task2.setTitle("P1 - Task 2");
         task2.setDescription("Lorem ipsum");
+        task2.setStatus(Task.Status.IN_PROGRESS);
         task2.setProject(project);
 
 		ArrayList<Task> tasks = new ArrayList<Task>();

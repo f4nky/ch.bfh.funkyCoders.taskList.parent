@@ -2,12 +2,17 @@ package ch.bfh.funkyCoders.taskList.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Fanky on 08.11.14.
  */
 @Entity
 public class Task {
+    public enum Status {
+        OPEN, IN_PROGRESS, DONE;
+    }
+
     private Long id;
 
     @GeneratedValue
@@ -66,14 +71,14 @@ public class Task {
         this.endDate = endDate;
     }
 
-    private String status;
+    private Status status;
 
     @Basic
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -86,5 +91,27 @@ public class Task {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    private Person taskOwner;
+
+    @ManyToOne
+    public Person getTaskOwner() {
+        return taskOwner;
+    }
+
+    public void setTaskOwner(Person taskOwner) {
+        this.taskOwner = taskOwner;
+    }
+
+    private List<Tag> tags;
+
+    @ManyToMany
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 }
