@@ -2,13 +2,13 @@
  * 
  */
 
-import java.util.List;
+import ch.bfh.funkyCoders.taskList.model.Project;
+import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-
-import org.junit.Test;
+import java.util.List;
 
 /**
  * @author rovi
@@ -20,17 +20,16 @@ public class DeleteIT {
 	public void test() {
 
 		EntityManager em = Persistence.createEntityManagerFactory(
-				"ch.bfh.swos.bookapp.domain").createEntityManager();
+				"ch.bfh.funkyCoders.taskList.domain").createEntityManager();
 
-		Query q = em.createQuery("select a from Author a");
+		Query q = em.createQuery("select p from Project p");
 		@SuppressWarnings("unchecked")
-		List<Author> foundAuthors = q.getResultList();
-		Author firstAuthor = foundAuthors.get(0);
-		// Assert.assertTrue(firstAuthor.getLastname().equals("Tolkien"));
+		List<Project> foundProjects = q.getResultList();
+		Project firstProject = foundProjects.get(0);
 
 		// Write access needs a transaction
 		em.getTransaction().begin();
-		em.remove(firstAuthor);
+		em.remove(firstProject);
 		em.getTransaction().commit();
 	}
 

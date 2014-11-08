@@ -2,17 +2,18 @@
  * 
  */
 
-import java.util.List;
+import ch.bfh.funkyCoders.taskList.model.Project;
+import ch.bfh.funkyCoders.taskList.model.Task;
+import org.junit.Assert;
+import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-
-import org.junit.Assert;
-import org.junit.Test;
+import java.util.List;
 
 /**
- * @author rovi
+ * @author Fanky
  * 
  */
 public class ReadIT {
@@ -21,17 +22,17 @@ public class ReadIT {
 	public void test() {
 
 		EntityManager em = Persistence.createEntityManagerFactory(
-				"ch.bfh.swos.bookapp.domain").createEntityManager();
+				"ch.bfh.funkyCoders.taskList.domain").createEntityManager();
 
-		Query q = em.createQuery("select a from Author a");
+		Query q = em.createQuery("select p from Project p");
 		@SuppressWarnings("unchecked")
-		List<Author> foundAuthors = q.getResultList();
-		Author firstAuthor = foundAuthors.get(0);
-		Assert.assertTrue(firstAuthor.getLastname().equals("Tolkien"));
+		List<Project> foundProjects = q.getResultList();
+		Project firstProject = foundProjects.get(0);
+		Assert.assertTrue(firstProject.getCosts() == 25000.00);
 
-		List<Book> foundBooks = firstAuthor.getBooks();
-		Book firstBook = foundBooks.get(0);
-		Assert.assertTrue(firstBook.getTitle().startsWith("Der Herr der Ringe"));
+		List<Task> foundTasks = firstProject.getTasks();
+		Task firstTask = foundTasks.get(0);
+		Assert.assertTrue(firstTask.getTitle().equals("P1 - Task 1"));
 	}
 
 }

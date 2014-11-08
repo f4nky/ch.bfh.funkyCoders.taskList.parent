@@ -2,17 +2,17 @@
  * 
  */
 
-import java.util.List;
+import ch.bfh.funkyCoders.taskList.model.Project;
+import org.junit.Assert;
+import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-
-import org.junit.Assert;
-import org.junit.Test;
+import java.util.List;
 
 /**
- * @author rovi
+ * @author Fanky
  * 
  */
 public class UpdateIT {
@@ -21,21 +21,21 @@ public class UpdateIT {
 	public void test() {
 
 		EntityManager em = Persistence.createEntityManagerFactory(
-				"ch.bfh.swos.bookapp.domain").createEntityManager();
+				"ch.bfh.funkyCoders.taskList.domain").createEntityManager();
 
-		Query q = em.createQuery("select a from Author a");
+		Query q = em.createQuery("select p from Project p");
 		@SuppressWarnings("unchecked")
-		List<Author> foundAuthors = q.getResultList();
-		Author firstAuthor = foundAuthors.get(0);
+		List<Project> foundProjects = q.getResultList();
+		Project firstProject = foundProjects.get(0);
 
 		// Write access needs a transaction
 		em.getTransaction().begin();
-		firstAuthor.setLastname("OtherName");
+        firstProject.setName("OtherName");
 		em.getTransaction().commit();
 		// Entity is persisted automatically after commit because it is managed
 		// by jpa.
 
-		Assert.assertTrue(firstAuthor.getLastname().equals("OtherName"));
+		Assert.assertTrue(firstProject.getName().equals("OtherName"));
 	}
 
 }

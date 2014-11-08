@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
-    <persistence-unit name="ch.bfh.funkyCoders.taskList.domain"/>
+    <persistence-unit name="ch.bfh.funkyCoders.taskList.domain">
+        <class>ch.bfh.funkyCoders.taskList.model.Project</class>
+        <class>ch.bfh.funkyCoders.taskList.model.Task</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/taskListDB"/>
+            <property name="javax.persistence.jdbc.user" value="bfh"/>
+            <property name="javax.persistence.jdbc.password" value="bfh"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+        </properties>
+    </persistence-unit>
 </persistence>

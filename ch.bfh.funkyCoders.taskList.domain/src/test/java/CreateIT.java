@@ -2,46 +2,47 @@
  * 
  */
 
-import java.util.ArrayList;
-import java.util.Date;
+import ch.bfh.funkyCoders.taskList.model.Project;
+import ch.bfh.funkyCoders.taskList.model.Task;
+import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-
-import org.junit.Test;
+import java.util.ArrayList;
 
 /**
- * @author rovi
+ * @author Fanky
  * 
  */
 public class CreateIT {
 
 	@Test
 	public void test() {
-		Author author = new Author();
-		author.setFirstname("J.R.R");
-		author.setLastname("Tolkien");
+        Project project = new Project();
+        project.setName("Project 1");
+        project.setCosts(25000.00);
 
-		Book book = new Book();
-		book.setTitle("Der Herr der Ringe - Die Gefährten");
-		book.setReleaseDate(new Date());
+        Task task1 = new Task();
+        task1.setTitle("P1 - Task 1");
+        task1.setDescription("Lorem ipsum");
+        task1.setProject(project);
 
-		Book book2 = new Book();
-		book2.setTitle("Der Herr der Ringe - Die zwei Türme");
-		book2.setReleaseDate(new Date());
+        Task task2 = new Task();
+        task2.setTitle("P1 - Task 2");
+        task2.setDescription("Lorem ipsum");
+        task2.setProject(project);
 
-		ArrayList<Book> books = new ArrayList<Book>();
-		books.add(book);
-		books.add(book2);
-		author.setBooks(books);
-		book.setAuthor(author);
-		book2.setAuthor(author);
+		ArrayList<Task> tasks = new ArrayList<Task>();
+        tasks.add(task1);
+        tasks.add(task2);
+
+        project.setTasks(tasks);
 
 		EntityManager em = Persistence.createEntityManagerFactory(
-				"ch.bfh.swos.bookapp.domain").createEntityManager();
+				"ch.bfh.funkyCoders.taskList.domain").createEntityManager();
 
 		em.getTransaction().begin();
-		em.persist(author);
+		em.persist(project);
 		em.getTransaction().commit();
 	}
 }
