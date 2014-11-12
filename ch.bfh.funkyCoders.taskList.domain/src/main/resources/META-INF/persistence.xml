@@ -13,7 +13,7 @@
             <property name="javax.persistence.jdbc.user" value="bfh"/>
             <property name="javax.persistence.jdbc.password" value="bfh"/>
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
-            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.ddl-generation" value="delete-and-create-tables"/>
         </properties>
     </persistence-unit>
 </persistence>

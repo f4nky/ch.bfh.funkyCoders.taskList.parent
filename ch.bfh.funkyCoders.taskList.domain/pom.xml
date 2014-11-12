@@ -27,7 +27,9 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>1.4.182</version>
+			<!--<version>1.4.182</version> do not use this version - it's beta!
+			http://stackoverflow.com/questions/23806471/why-is-my-embedded-h2-program-writing-to-a-mv-db-file -->
+			<version>1.3.176</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
