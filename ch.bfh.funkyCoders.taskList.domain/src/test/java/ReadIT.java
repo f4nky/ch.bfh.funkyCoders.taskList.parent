@@ -37,7 +37,7 @@ public class ReadIT {
 
 		List<Task> foundTasks = firstProject.getTasks();
 		Task firstTask = foundTasks.get(0);
-		Assert.assertTrue(firstTask.getTitle().equals("P1 - Task 1"));
+		Assert.assertTrue(firstTask.getName().equals("P1 - Task 1"));
         Assert.assertTrue(firstTask.getStatus().equals(Task.Status.OPEN));
 	}
 

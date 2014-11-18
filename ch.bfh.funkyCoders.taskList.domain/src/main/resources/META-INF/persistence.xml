@@ -6,14 +6,5 @@
         <class>ch.bfh.funkyCoders.taskList.model.Task</class>
         <class>ch.bfh.funkyCoders.taskList.model.Person</class>
         <class>ch.bfh.funkyCoders.taskList.model.Tag</class>
-
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/taskListDB"/>
-            <property name="javax.persistence.jdbc.user" value="bfh"/>
-            <property name="javax.persistence.jdbc.password" value="bfh"/>
-            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
-            <property name="eclipselink.ddl-generation" value="delete-and-create-tables"/>
-        </properties>
     </persistence-unit>
 </persistence>

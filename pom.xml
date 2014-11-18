@@ -11,6 +11,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>ch.bfh.funkyCoders.taskList.domain</module>
+        <module>ch.bfh.funkyCoders.taskList.service</module>
     </modules>
 
 </project>

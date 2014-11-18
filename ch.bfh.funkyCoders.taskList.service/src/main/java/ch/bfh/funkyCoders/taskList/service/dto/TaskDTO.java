@@ -1,6 +1,6 @@
-package ch.bfh.funkyCoders.taskList.model;
+package ch.bfh.funkyCoders.taskList.service.dto;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
 
@@ -8,15 +8,13 @@ import java.util.List;
  * Created by Fanky on 08.11.14.
  */
 @Entity
-public class Task {
+public class TaskDTO {
     public enum Status {
         OPEN, IN_PROGRESS, DONE;
     }
 
     private Long id;
 
-    @GeneratedValue
-    @Id
     public Long getId() {
         return id;
     }
@@ -27,7 +25,6 @@ public class Task {
 
     private String name;
 
-    @Basic
     public String getName() {
         return name;
     }
@@ -38,7 +35,6 @@ public class Task {
 
     private String description;
 
-    @Basic
     public String getDescription() {
         return description;
     }
@@ -49,8 +45,6 @@ public class Task {
 
     private Date startDate;
 
-    @Temporal(TemporalType.DATE)
-    @Basic
     public Date getStartDate() {
         return startDate;
     }
@@ -61,8 +55,6 @@ public class Task {
 
     private Date endDate;
 
-    @Temporal(TemporalType.DATE)
-    @Basic
     public Date getEndDate() {
         return endDate;
     }
@@ -73,7 +65,6 @@ public class Task {
 
     private Status status;
 
-    @Basic
     public Status getStatus() {
         return status;
     }
@@ -82,36 +73,33 @@ public class Task {
         this.status = status;
     }
 
-    private Project project;
+    private ProjectDTO project;
 
-    @ManyToOne
-    public Project getProject() {
+    public ProjectDTO getProject() {
         return project;
     }
 
-    public void setProject(Project project) {
+    public void setProject(ProjectDTO project) {
         this.project = project;
     }
 
-    private Person taskOwner;
+    private PersonDTO taskOwner;
 
-    @ManyToOne
-    public Person getTaskOwner() {
+    public PersonDTO getTaskOwner() {
         return taskOwner;
     }
 
-    public void setTaskOwner(Person taskOwner) {
+    public void setTaskOwner(PersonDTO taskOwner) {
         this.taskOwner = taskOwner;
     }
 
-    private List<Tag> tags;
+    private List<TagDTO> tags;
 
-    @ManyToMany
-    public List<Tag> getTags() {
+    public List<TagDTO> getTags() {
         return tags;
     }
 
-    public void setTags(List<Tag> tags) {
+    public void setTags(List<TagDTO> tags) {
         this.tags = tags;
     }
 }

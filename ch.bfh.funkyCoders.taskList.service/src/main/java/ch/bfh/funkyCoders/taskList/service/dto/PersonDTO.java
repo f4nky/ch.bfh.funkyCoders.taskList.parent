@@ -1,17 +1,15 @@
-package ch.bfh.funkyCoders.taskList.model;
+package ch.bfh.funkyCoders.taskList.service.dto;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
 import java.util.List;
 
 /**
  * Created by Fanky on 08.11.14.
  */
 @Entity
-public class Person {
+public class PersonDTO {
     private Long id;
 
-    @GeneratedValue
-    @Id
     public Long getId() {
         return id;
     }
@@ -22,7 +20,6 @@ public class Person {
 
     private String name;
 
-    @Basic
     public String getName() {
         return name;
     }
@@ -33,7 +30,6 @@ public class Person {
 
     private String initials;
 
-    @Basic
     public String getInitials() {
         return initials;
     }
@@ -42,25 +38,23 @@ public class Person {
         this.initials = initials;
     }
 
-    private List<Project> projects;
+    private List<ProjectDTO> projects;
 
-    @OneToMany
-    public List<Project> getProjects() {
+    public List<ProjectDTO> getProjects() {
         return projects;
     }
 
-    public void setProjects(List<Project> projects) {
+    public void setProjects(List<ProjectDTO> projects) {
         this.projects = projects;
     }
 
-    private List<Task> tasks;
+    private List<TaskDTO> tasks;
 
-    @OneToMany
-    public List<Task> getTasks() {
+    public List<TaskDTO> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<Task> tasks) {
+    public void setTasks(List<TaskDTO> tasks) {
         this.tasks = tasks;
     }
 }

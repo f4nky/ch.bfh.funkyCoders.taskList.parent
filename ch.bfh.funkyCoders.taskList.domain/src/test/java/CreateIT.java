@@ -29,13 +29,13 @@ public class CreateIT {
         project.setEndDate(sdf.parse("2015-01-31"));
 
         Task task1 = new Task();
-        task1.setTitle("P1 - Task 1");
+        task1.setName("P1 - Task 1");
         task1.setDescription("Lorem ipsum");
         task1.setStatus(Task.Status.OPEN);
         task1.setProject(project);
 
         Task task2 = new Task();
-        task2.setTitle("P1 - Task 2");
+        task2.setName("P1 - Task 2");
         task2.setDescription("Lorem ipsum");
         task2.setStatus(Task.Status.IN_PROGRESS);
         task2.setProject(project);
