@@ -25,7 +25,7 @@
 		<property name="jpaVendorAdapter">
 			<bean
 				class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
-				<property name="database" value="MYSQL" />
+				<property name="database" value="H2" />
 			</bean>
 		</property>
 		<property name="jpaProperties">
