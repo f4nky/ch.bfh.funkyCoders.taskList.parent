@@ -8,12 +8,14 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.lang.reflect.Type;
 import java.util.Collection;
 
 /**
  * Created by Fanky on 25.11.14.
  */
+@Named
 public class DefaultTaskService implements TaskService {
 
     @Inject
