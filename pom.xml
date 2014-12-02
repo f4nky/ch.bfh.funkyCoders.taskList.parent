@@ -12,6 +12,7 @@
     <modules>
         <module>ch.bfh.funkyCoders.taskList.domain</module>
         <module>ch.bfh.funkyCoders.taskList.service</module>
+        <module>ch.bfh.funkyCoders.taskList.rest</module>
     </modules>
 
 </project>
