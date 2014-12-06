@@ -1,5 +1,6 @@
 package ch.bfh.funkyCoders.taskList.service.dto;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
 import javax.persistence.Entity;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class PersonDTO {
         this.initials = initials;
     }
 
+    @JsonBackReference
     private List<ProjectDTO> projects;
 
     public List<ProjectDTO> getProjects() {
@@ -48,6 +50,7 @@ public class PersonDTO {
         this.projects = projects;
     }
 
+    @JsonBackReference
     private List<TaskDTO> tasks;
 
     public List<TaskDTO> getTasks() {

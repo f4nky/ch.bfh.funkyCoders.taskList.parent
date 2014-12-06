@@ -1,5 +1,7 @@
 package ch.bfh.funkyCoders.taskList.service.dto;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
@@ -73,6 +75,7 @@ public class TaskDTO {
         this.status = status;
     }
 
+    @JsonBackReference
     private ProjectDTO project;
 
     public ProjectDTO getProject() {
