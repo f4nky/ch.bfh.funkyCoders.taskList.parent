@@ -50,7 +50,7 @@ public class PersonDTO {
         this.projects = projects;
     }
 
-    @JsonBackReference
+    //@JsonBackReference
     private List<TaskDTO> tasks;
 
     public List<TaskDTO> getTasks() {
