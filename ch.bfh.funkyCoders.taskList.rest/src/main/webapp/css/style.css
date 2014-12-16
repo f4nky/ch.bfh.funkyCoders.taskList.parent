@@ -1,3 +1,89 @@
+@charset "UTF-8";
+
+/* === GENERAL === */
 body {
 	padding-top: 50px;
+}
+
+h1.page-header {
+	font-size: 30px;
+	margin: 10px 0 20px;
+	padding-bottom: 5px;
+}
+
+h3 {
+	border-bottom: 1px solid #eee;
+	font-size: 22px;
+	margin-bottom: 20px;
+	padding-bottom: 5px;
+}
+
+/* === STRUCTURE === */
+#wrapper { 
+	padding-left: 250px;
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper {
+	background-color: #eee;
+	height: 100%;
+	margin-left: -250px;
+	position: fixed;
+	width: 250px;
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+	padding-left: 250px;
+}
+
+/* === SIDEBAR NAVIGATION === */
+.sidebar-nav {
+	font-size: 1.2em;
+	list-style: none;
+	padding: 0;
+	position: relative;
+	width: 250px;
+}
+
+.sidebar-nav li a {
+	display: block;
+	padding: 10px 15px; 
+}
+
+.sidebar-nav li a:hover {
+	background-color: #eee;
+	text-decoration: none;
+}
+
+.sidebar-nav li ul {
+	list-style: none;
+	padding-left: 20px;
+}
+
+.sidebar-nav li ul li {
+	margin: 0;
+	padding: 0;
+}
+
+#page-content-wrapper {
+	padding: 20px;
+	width: 100%;
+}
+
+/* === CONTENT === */
+.table {
+	padding-top: 10px;
+}
+
+@media (max-width: 767px) {
+	#wrapper {
+		padding-left: 0;
+	}
 }
