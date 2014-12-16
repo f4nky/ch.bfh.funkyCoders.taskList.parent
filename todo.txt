@@ -1,0 +1,18 @@
+> Bootstrap Template (MF)
+  > Menu / Sidebar
+  > Tags in Dropdown wenn kein Platz
+
+> Filter / Suche / Sortierung
+
+> Validierung
+
+> Projekte / Tasks (RS)
+  > Anzeigen
+  > Erfassen
+  > Bearbeiten
+  > Löschen
+
+
+Weitere Ideen:
+
+> Authentication / Authorisation
