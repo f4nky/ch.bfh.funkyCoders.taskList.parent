@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="page-header">Projects</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-success" ui-sref="newProject">New Project</button>
+        </div>
+        <div class="col-sm-3">
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                <input type="text" class="form-control" id="search" name="search" placeholder="Search" />
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Sortieren<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">nach Fälligkeit</a></li>
+                    <li><a href="#">nach Name</a></li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Filtern<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">alle</a></li>
+                    <li><a href="#">nur offene</a></li>
+                    <li><a href="#">nur erledigte</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th class="col-xs-1">#</th>
+                    <th class="col-xs-2">Name</th>
+                    <th class="col-xs-2">Estimated costs</th>
+                    <th class="col-xs-2">Start date</th>
+                    <th class="col-xs-2">End date</th>
+                    <th class="col-xs-3"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="project in projects">
+                    <td>{{project.id}}</td>
+                    <td><a href="#/project/{{project.id}}">{{project.name}}</a></td>
+                    <td>{{project.cost}}</td>
+                    <td>{{project.startDate}}</td>
+                    <td>{{project.endDate}}</td>
+                    <td>
+                        <button type="button" class="btn btn-xs btn-primary" ui-sref="editProject({id:project.id})">Edit</button>
+                        <button type="button" class="btn btn-xs btn-danger" ng-click="deleteProject(project)">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
