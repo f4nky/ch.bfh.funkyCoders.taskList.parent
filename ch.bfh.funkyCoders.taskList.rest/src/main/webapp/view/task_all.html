@@ -1,10 +1,10 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="SelectController">
     <div class="row">
         <h1 class="page-header">{{project.name}}</h1>
     </div>
     <div class="row">
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                 <tr>
                     <th class="col-xs-1">#</th>
@@ -31,63 +31,29 @@
     </div>
     <div class="row">
         <div class="col-xs-3">
-            <button type="button" class="btn btn-success" ui-sref="newTask">New Task</button>
+            <button type="button" class="btn btn-success" ui-sref="newTask({id: project.id})">New Task</button>
         </div>
         <div class="col-xs-6">
-            <!--<div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default">Mac</button>
-                <button type="button" class="btn btn-default">Mobile</button>
-                <button type="button" class="btn btn-default">Smartphone</button>
-                <button type="button" class="btn btn-default">Windows</button>
-                <button type="button" class="btn btn-default">Win7</button>
-                <button type="button" class="btn btn-default">Linux</button>
-            </div>-->
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                <input type="text" class="form-control" id="search" name="search" placeholder="Search">
+                <input type="text" class="form-control" ng-model="search" id="search" name="search" placeholder="Search">
             </div>
         </div>
         <div class="col-xs-3">
-            <!--<div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Tags<span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><label><input type="checkbox" />Mac</label></li>
-                    <li><label><input type="checkbox" />Mobile</label></li>
-                    <li><label><input type="checkbox" />Smartphone</label></li>
-                    <li><label><input type="checkbox" />Windows</label></li>
-                    <li><label><input type="checkbox" />Win7</label></li>
-                    <li><label><input type="checkbox" />Linux</label></li>
-                </ul>
-            </div>-->
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Sortieren<span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">nach Fälligkeit</a></li>
-                    <li><a href="#">nach Name</a></li>
-                </ul>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Filtern<span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">alle</a></li>
-                    <li><a href="#">nur offene</a></li>
-                    <li><a href="#">nur erledigte</a></li>
-                </ul>
-            </div>
+            <select ng-model="orderBy" ng-init="orderBy = orderBy || sortOptions[0].id" ng-options="sortOption.id as sortOption.name for sortOption in sortOptions"></select>
+            <select ng-model="filterBy" ng-init="filterBy = filterBy || filterOptions[0].id" ng-options="filterOption.id as filterOption.name for filterOption in filterOptions"></select>
         </div>
     </div>
     <br/>
     <div class="row">
         <div class="table-responsive">
-            <table class="table table-striped">
+            <div ng-hide="project.tasks.length">No tasks. <a ui-sref="newTask({id: project.id})">Click</a> to create a new task.</div>
+            <table class="table table-striped" ng-show="project.tasks.length">
                 <thead>
                 <tr>
                     <th></th>
                     <th class="col-xs-1">#</th>
-                    <th class="col-xs-2">Titel</th>
+                    <th class="col-xs-2">Name</th>
                     <th class="col-xs-3">Description</th>
                     <th class="col-xs-2">Start date</th>
                     <th class="col-xs-2">End date</th>
@@ -95,7 +61,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="task in tasks">
+                <tr ng-repeat="task in project.tasks | filter:search | orderBy:orderBy">
                     <td><input type="checkbox" class="checkthis" checked="{{task.status}}" /></td>
                     <td>{{task.id}}</td>
                     <td>{{task.name}}</td>
@@ -103,8 +69,8 @@
                     <td>{{task.startDate}}</td>
                     <td>{{task.endDate}}</td>
                     <td>
-                        <button type="button" class="btn btn-xs btn-primary" ui-sref="editTask({id:task.id})">Edit</button>
-                        <button type="button" class="btn btn-xs btn-danger" ng-click="deleteTask(task)">Delete</button>
+                        <button type="button" class="btn btn-xs btn-primary" ui-sref="editTask({id:project.id, tid:task.id})">Edit</button>
+                        <button type="button" class="btn btn-xs btn-danger" ng-click="deleteTask(task.id)">Delete</button>
                     </td>
                 </tr>
                 </tbody>

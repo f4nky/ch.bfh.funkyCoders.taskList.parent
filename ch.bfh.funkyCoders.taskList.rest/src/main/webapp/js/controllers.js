@@ -1,4 +1,22 @@
 angular.module('tasklist.controllers', [])
+.controller('SelectController', function($scope) {
+    $scope.sortOptions = [
+        { id: 'id', name: 'Order by #' },
+        { id: 'name', name: 'Order by name' },
+        { id: 'description', name: 'Order by desc.' },
+        { id: '"end date"', name: 'Order by date' }
+    ];
+    $scope.sortProjects = [
+        { id: 'id', name: 'Order by #' },
+        { id: 'name', name: 'Order by name' },
+        { id: '"end date"', name: 'Order by date' }
+    ];
+    $scope.filterOptions = [
+        { id: 'all', name: 'Show all tasks' },
+        { id: 'open', name: 'Open tasks' },
+        { id: 'done', name: 'Completed tasks' }
+    ];
+})
 .controller('ProjectsController', function($scope, Project) {
     $scope.projects = Project.query();
 })
@@ -20,7 +38,7 @@ angular.module('tasklist.controllers', [])
         });
     };
 })
-.controller('ProjectEditController', function($scope, $state, $stateParams, Project) {
+.controller('ProjectEditController', function($scope, $state, $stateParams, Project, $window) {
     $scope.updateProject = function() {
         $scope.project.$update(function() {
             $state.go('project');
@@ -31,33 +49,36 @@ angular.module('tasklist.controllers', [])
     };
     $scope.loadProject();
 })
-.controller('TaskListController', function($scope, $state, $stateParams, popupService, $window, Task, Project) {
-    $scope.tasks = Task.query();
+.controller('TaskListController', function($scope, $state, $stateParams, popupService, $window, Project, Task) {
     $scope.project = Project.get({ id: $stateParams.id });
-    $scope.deleteTask = function(task) {
-        if (popupService.showPopup('Really delete this?')) {
-            task.$delete(function() {
-                $window.location.href = '';
+    $scope.deleteTask = function(tid) {
+        if (popupService.showPopup('Really delete this?' )) {
+            $scope.task = Task.get({ id: tid }, function() {
+                $scope.task.$delete(function() {
+                    $state.go('task',{id:$stateParams.id});
+                });
             });
         }
     };
 })
-.controller('TaskCreateController', function($scope, $state, $stateParams, Task) {
+.controller('TaskCreateController', function($scope, $state, $stateParams, Project, Task) {
+    $scope.project = Project.get({ id: $stateParams.id });
     $scope.task = new Task();
     $scope.addTask = function() {
-        $scope.task.$save(function() {
-            $state.go('task');
+        $scope.project.tasks.push($scope.task);
+        $scope.project.$update(function() {
+            $state.go('task',{id:$stateParams.id});
         });
     };
 })
 .controller('TaskEditController', function($scope, $state, $stateParams, Task) {
     $scope.updateTask = function() {
         $scope.task.$update(function() {
-            $state.go('task');
+            $state.go('task',{id:$stateParams.id});
         });
     };
     $scope.loadTask = function() {
-        $scope.task = Task.get({ id: $stateParams.id });
+        $scope.task = Task.get({ id: $stateParams.tid });
     };
     $scope.loadTask();
 });

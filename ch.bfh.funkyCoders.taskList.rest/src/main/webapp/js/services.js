@@ -17,5 +17,5 @@ angular.module('tasklist.services', [])
         this.showPopup=function(message){
             return $window.confirm(message);
         }
-    })
+    });
 ;

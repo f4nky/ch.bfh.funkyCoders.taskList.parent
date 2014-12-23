@@ -28,9 +28,9 @@
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
 					<li>
-						<a href="#/project">Projects</a>
+						<a href="#/projects">Projects</a>
                         <ul ng-controller="ProjectsController">
-							<li ng-repeat="project in projects"><a href="#/project/{{project.id}}">{{project.name}}</a></li>
+							<li ng-repeat="project in projects"><a href="#/project/{{project.id}}/tasks">{{project.name}}</a></li>
                         </ul>
 					</li>
 				</ul>
