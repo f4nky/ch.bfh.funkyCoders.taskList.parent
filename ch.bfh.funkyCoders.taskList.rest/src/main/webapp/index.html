@@ -11,7 +11,7 @@
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 	</head>
-	<body>
+	<body class="preload">
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -26,13 +26,19 @@
 		</nav>
 		<div id="wrapper">
 			<div id="sidebar-wrapper">
-				<ul class="sidebar-nav">
-					<li>
-						<a href="#/project">Projects</a>
-                        <ul ng-controller="ProjectsController">
-							<li ng-repeat="project in projects"><a href="#/project/{{project.id}}">{{project.name}}</a></li>
-                        </ul>
-					</li>
+				<ul class="list-group" ng-controller="ProjectsController">
+					<a href="#projects" class="list-group-item" data-toggle="collapse">
+						<span class="glyphicon glyphicon-briefcase"></span> Projects <i class="caret"></i>
+						<span class="badge">{{projects.length}}</span>
+					</a>
+					<div id="projects">
+						<a href="#/project" class="list-group-item">
+							<span class="glyphicon glyphicon-chevron-right"></span> All projects
+						</a>
+						<a href="#/project/{{project.id}}" class="list-group-item" ng-repeat="project in projects | orderBy:'name'">
+							<span class="glyphicon glyphicon-chevron-right"></span> {{project.name}}
+						</a>
+					</div>
 				</ul>
 			</div>
 			<div ui-view id="page-content-wrapper"></div>
@@ -49,5 +55,3 @@
         <script src="js/services.js"></script>
 	</body>
 </html>
-
-<!-- http://www.bootply.com/128936 -->
