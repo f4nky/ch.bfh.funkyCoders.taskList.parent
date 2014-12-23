@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 public class TaskDTO {
     public enum Status {
-        OPEN, IN_PROGRESS, DONE;
+        OPEN, DELETED, DONE;
     }
 
     private Long id;

@@ -32,10 +32,10 @@
 						<span class="badge">{{projects.length}}</span>
 					</a>
 					<div id="projects">
-						<a href="#/project" class="list-group-item">
+						<a href="#/projects" class="list-group-item">
 							<span class="glyphicon glyphicon-chevron-right"></span> All projects
 						</a>
-						<a href="#/project/{{project.id}}" class="list-group-item" ng-repeat="project in projects | orderBy:'name'">
+						<a href="#/project/{{project.id}}/tasks" class="list-group-item" ng-repeat="project in projects | orderBy:'name'">
 							<span class="glyphicon glyphicon-chevron-right"></span> {{project.name}}
 						</a>
 					</div>

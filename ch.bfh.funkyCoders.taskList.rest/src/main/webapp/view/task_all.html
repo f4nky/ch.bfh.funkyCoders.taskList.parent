@@ -41,7 +41,7 @@
         </div>
         <div class="col-xs-3">
             <select ng-model="orderBy" ng-init="orderBy = orderBy || sortOptions[0].id" ng-options="sortOption.id as sortOption.name for sortOption in sortOptions"></select>
-            <select ng-model="filterBy" ng-init="filterBy = filterBy || filterOptions[0].id" ng-options="filterOption.id as filterOption.name for filterOption in filterOptions"></select>
+            <select ng-model="status" ng-init="status = status || filterOptions[0].id" ng-options="filterOption.id as filterOption.name for filterOption in filterOptions"></select>
         </div>
     </div>
     <br/>
@@ -61,8 +61,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="task in project.tasks | filter:search | orderBy:orderBy">
-                    <td><input type="checkbox" class="checkthis" checked="{{task.status}}" /></td>
+                <tr ng-repeat="task in project.tasks | orderBy:orderBy | filter:search | filter:status">
+                    <td><input type="checkbox" ng-controller="StatusController" class="checkthis" ng-checked="task.status=='DONE'" ng-click="task.status=='DONE'?setStatus(task.id,'OPEN'):setStatus(task.id,'DONE')" /></td>
                     <td>{{task.id}}</td>
                     <td>{{task.name}}</td>
                     <td>{{task.description}}</td>

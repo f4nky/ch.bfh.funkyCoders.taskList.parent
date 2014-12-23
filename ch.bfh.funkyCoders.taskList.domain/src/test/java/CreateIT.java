@@ -37,7 +37,7 @@ public class CreateIT {
         Task task2 = new Task();
         task2.setName("P1 - Task 2");
         task2.setDescription("Lorem ipsum");
-        task2.setStatus(Task.Status.IN_PROGRESS);
+        task2.setStatus(Task.Status.DONE);
         task2.setProject(project);
 
 		ArrayList<Task> tasks = new ArrayList<Task>();

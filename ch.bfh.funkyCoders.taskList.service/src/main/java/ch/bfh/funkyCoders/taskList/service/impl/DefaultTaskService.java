@@ -25,6 +25,7 @@ public class DefaultTaskService implements TaskService {
 
     public TaskDTO create(TaskDTO taskDTO) {
         Task task = mapper.map(taskDTO, Task.class);
+        if (task.getStatus()==null) task.setStatus(Task.Status.OPEN);
         Task persistedTask = taskRepository.save(task);
         return mapper.map(persistedTask, TaskDTO.class);
     }

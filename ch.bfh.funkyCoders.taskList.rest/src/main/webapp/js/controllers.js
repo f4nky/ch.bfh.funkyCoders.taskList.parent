@@ -12,10 +12,17 @@ angular.module('tasklist.controllers', [])
         { id: '"end date"', name: 'Order by date' }
     ];
     $scope.filterOptions = [
-        { id: 'all', name: 'Show all tasks' },
-        { id: 'open', name: 'Open tasks' },
-        { id: 'done', name: 'Completed tasks' }
+        { id: {status:"!DELETED"}, name: 'Show all tasks' },
+        { id: {status:"OPEN"}, name: 'Open tasks' },
+        { id: {status:"DONE"}, name: 'Completed tasks' }
     ];
+}).controller('StatusController',function($state, $scope, Task){
+        $scope.setStatus=function(id, status){
+        $scope.task = Task.get({ id: id }, function() {
+            $scope.task.status = status;
+            $scope.task.$update();
+        });
+    }
 })
 .controller('ProjectsController', function($scope, Project) {
     $scope.projects = Project.query();
@@ -54,8 +61,9 @@ angular.module('tasklist.controllers', [])
     $scope.deleteTask = function(tid) {
         if (popupService.showPopup('Really delete this?' )) {
             $scope.task = Task.get({ id: tid }, function() {
-                $scope.task.$delete(function() {
-                    $state.go('task',{id:$stateParams.id});
+                $scope.task.status = "DELETED";
+                $scope.task.$update(function() {
+                    $state.reload();
                 });
             });
         }
@@ -71,7 +79,8 @@ angular.module('tasklist.controllers', [])
         });
     };
 })
-.controller('TaskEditController', function($scope, $state, $stateParams, Task) {
+.controller('TaskEditController', function($scope, $state, $stateParams, Project, Task) {
+    $scope.project = Project.get({ id: $stateParams.id });
     $scope.updateTask = function() {
         $scope.task.$update(function() {
             $state.go('task',{id:$stateParams.id});

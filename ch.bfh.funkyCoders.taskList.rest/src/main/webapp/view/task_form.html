@@ -23,9 +23,9 @@
     </div>
 </div>
 <div class="form-group" ng-show="task.id">
-    <label for="status" class="col-sm-2 control-label">Status</label>
+    <label for="status" class="col-sm-2 control-label">Completed</label>
     <div class="col-sm-10">
-        <input type="checkbox" ng-model="task.status" class="form-control" id="status"/>
+        <input type="checkbox" ng-model="task.status" ng-true-value="DONE" ng-false-value="OPEN" class="" id="status"/>
     </div>
 </div>
 <div class="form-group">
