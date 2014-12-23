@@ -36,8 +36,8 @@
                     <td>{{project.id}}</td>
                     <td><a href="#/project/{{project.id}}/tasks">{{project.name}}</a></td>
                     <td>{{project.cost}}</td>
-                    <td>{{project.startDate}}</td>
-                    <td>{{project.endDate}}</td>
+                    <td>{{project.startDate | date:'dd.MM.yyyy'}}</td>
+                    <td>{{project.endDate | date:'dd.MM.yyyy'}}</td>
                     <td>
                         <button type="button" class="btn btn-xs btn-primary" ui-sref="editProject({id:project.id})">Edit</button>
                         <button type="button" class="btn btn-xs btn-danger" ng-click="deleteProject(project)">Delete</button>

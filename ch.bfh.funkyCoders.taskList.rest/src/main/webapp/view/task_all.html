@@ -19,8 +19,8 @@
                     <td col-xs-1>{{project.id}}</td>
                     <td col-xs-2>{{project.name}}</a></td>
                     <td col-xs-2>{{project.costs}}</td>
-                    <td col-xs-2>{{project.startDate}}</td>
-                    <td col-xs-2>{{project.endDate}}</td>
+                    <td col-xs-2>{{project.startDate | date:'dd.MM.yyyy'}}</td>
+                    <td col-xs-2>{{project.endDate | date:'dd.MM.yyyy'}}</td>
                 </tr>
                 </tbody>
             </table>
