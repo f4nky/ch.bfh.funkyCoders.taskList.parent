@@ -18,7 +18,7 @@
                     <tr>
                         <td class="col-xs-1">{{project.id}}</td>
                         <td class="col-xs-2">{{project.name}}</a></td>
-                        <td class="col-xs-2">{{project.costs}}</td>
+                        <td class="col-xs-2">{{project.costs | currency:'CHF ':0}}</td>
                         <td class="col-xs-2">{{project.startDate | date:'dd.MM.yyyy'}}</td>
                         <td class="col-xs-4">{{project.endDate | date:'dd.MM.yyyy'}}</td>
                     </tr>

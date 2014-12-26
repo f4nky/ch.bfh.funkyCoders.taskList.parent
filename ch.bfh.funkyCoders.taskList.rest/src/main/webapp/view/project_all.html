@@ -32,7 +32,7 @@
                 <tr ng-repeat="project in projects | filter:search | orderBy:orderByField:reverseSort">
                     <td>{{project.id}}</td>
                     <td><a href="#/project/{{project.id}}/tasks">{{project.name}}</a></td>
-                    <td>{{project.costs}}</td>
+                    <td>{{project.costs | currency:'CHF ':0}}</td>
                     <td>{{project.startDate | date:'dd.MM.yyyy'}}</td>
                     <td>{{project.endDate | date:'dd.MM.yyyy'}}</td>
                     <td>
