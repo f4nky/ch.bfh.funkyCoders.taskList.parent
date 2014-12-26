@@ -7,11 +7,18 @@ angular.module('tasklist.services', [])
             }
         });
     }).factory('Task', function($resource) {
-        return $resource('rest/tasks/:id', { id: '@id' }, {
+        return $resource('rest/tasks/:id', {id: '@id'}, {
             update: {
                 method: 'PUT',
                 url: 'rest/tasks'
             }
+        });
+    }).factory('Tag', function($resource) {
+        return $resource('rest/tags/:id', {id: '@id'}, {
+           update: {
+               method: 'PUT',
+               url: 'rest/tags'
+           }
         });
     }).service('popupService',function($window){
         this.showPopup=function(message){
