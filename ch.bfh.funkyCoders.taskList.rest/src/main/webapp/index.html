@@ -40,10 +40,10 @@
 						</a>
 					</div>
 				</ul>
-				<ul class="list-group">
+				<ul class="list-group" ng-controller="OwnerListController">
 					<a href="#owners" class="list-group-item" data-toggle="collapse">
 						<span class="glyphicon glyphicon-briefcase"></span> Owners <i class="caret"></i>
-						<!--<span class="badge">{{projects.length}}</span>-->
+						<span class="badge">{{owners.length}}</span>
 					</a>
 					<div id="owners">
 						<a href="#/owners" class="list-group-item">

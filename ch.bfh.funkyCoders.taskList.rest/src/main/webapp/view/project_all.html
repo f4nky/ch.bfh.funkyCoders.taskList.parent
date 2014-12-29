@@ -22,16 +22,18 @@
                 <tr>
                     <th class="col-xs-1"><a href="#" ng-click="orderByField='id'; reverseSort=!reverseSort">#</a></th>
                     <th class="col-xs-2"><a href="#" ng-click="orderByField='name'; reverseSort=!reverseSort">Name</a></th>
+                    <th class="col-xs-1"><a href="#" ng-click="orderByField='initials'; reverseSort=!reverseSort">Owner</a></th>
                     <th class="col-xs-2"><a href="#" ng-click="orderByField='costs'; reverseSort=!reverseSort">Estimated costs</a></th>
                     <th class="col-xs-2"><a href="#" ng-click="orderByField='startDate'; reverseSort=!reverseSort">Start date</a></th>
                     <th class="col-xs-2"><a href="#" ng-click="orderByField='endDate'; reverseSort=!reverseSort">End date</a></th>
-                    <th class="col-xs-3"></th>
+                    <th class="col-xs-2"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="project in projects | filter:search | orderBy:orderByField:reverseSort">
                     <td>{{project.id}}</td>
                     <td><a href="#/project/{{project.id}}/tasks">{{project.name}}</a></td>
+                    <td>{{project.projectOwner}}</td>
                     <td>{{project.costs | currency:'CHF ':0}}</td>
                     <td>{{project.startDate | date:'dd.MM.yyyy'}}</td>
                     <td>{{project.endDate | date:'dd.MM.yyyy'}}</td>
