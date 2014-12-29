@@ -40,9 +40,10 @@
 						</a>
 					</div>
 				</ul>
-				<ul class="list-group">
+				<ul class="list-group" ng-controller="TagListController">
 					<a href="#tags" class="list-group-item" data-toggle="collapse">
 						<span class="glyphicon glyphicon-briefcase"></span> Tags <i class="caret"></i>
+						<span class="badge">{{tags.length}}</span>
 					</a>
 					<div id="tags">
 						<a href="#/tags" class="list-group-item">
