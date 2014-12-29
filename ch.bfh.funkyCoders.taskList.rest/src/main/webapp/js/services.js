@@ -19,7 +19,7 @@ angular.module('tasklist.services', [])
                 method: 'PUT',
                 url: 'rest/owners'
             }
-        )};
+        });
     }).factory('Tag', function ($resource) {
         return $resource('rest/tags/:id', {id: '@id'}, {
             update: {
