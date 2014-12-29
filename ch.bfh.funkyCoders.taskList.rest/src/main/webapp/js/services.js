@@ -15,14 +15,20 @@ angular.module('tasklist.services', [])
         });
     }).factory('Person', function($resource) {
         return $resource('rest/owners/:id', {id: '@id'}, {
-           update: {
-               method: 'PUT',
-               url: 'rest/owners'
-           }
+            update: {
+                method: 'PUT',
+                url: 'rest/owners'
+            }
+        )};
+    }).factory('Tag', function ($resource) {
+        return $resource('rest/tags/:id', {id: '@id'}, {
+            update: {
+                method: 'PUT',
+                url: 'rest/tags'
+            }
         });
-    }).service('popupService',function($window){
-        this.showPopup=function(message){
+    }).service('popupService', function ($window) {
+        this.showPopup = function (message) {
             return $window.confirm(message);
         }
     });
-;

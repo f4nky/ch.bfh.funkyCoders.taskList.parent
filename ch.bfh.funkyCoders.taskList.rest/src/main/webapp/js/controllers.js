@@ -45,7 +45,7 @@ angular.module('tasklist.controllers', [])
         });
     };
 })
-.controller('ProjectEditController', function($scope, $state, $stateParams, Project, $window) {
+.controller('ProjectEditController', function($scope, $state, $stateParams, Project) {
     $scope.updateProject = function() {
         $scope.project.$update(function() {
             $state.go('project');
@@ -119,4 +119,31 @@ angular.module('tasklist.controllers', [])
         $scope.owner = Person.get({ id: $stateParams.id });
     };
     $scope.loadPerson();
+})
+.controller('TagListController', function($scope, $state, popupService, $window, Tag) {
+    $scope.tags = Tag.query();
+    $scope.deleteTag = function(tag) {
+        if (popupService.showPopup('Really delete this?')) {
+            tag.$delete();
+        }
+    };
+})
+.controller('TagCreateController', function($scope, $state, $stateParams, Tag) {
+    $scope.tag = new Tag();
+    $scope.addTag = function() {
+        $scope.tag.$save(function() {
+            $state.go('tag');
+        });
+    };
+})
+.controller('TagEditController', function($scope, $state, $stateParams, Tag) {
+    $scope.updateTag = function() {
+        $scope.tag.$update(function() {
+            $state.go('tag');
+        });
+    };
+    $scope.loadTag = function() {
+        $scope.tag = Tag.get({ id: $stateParams.id });
+    };
+    $scope.loadTag();
 });

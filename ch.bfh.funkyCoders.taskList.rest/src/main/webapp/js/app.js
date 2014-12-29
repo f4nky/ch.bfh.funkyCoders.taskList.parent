@@ -39,7 +39,20 @@ angular.module('tasklist').config(function($stateProvider) {
         url: '/owner/:id/edit',
         templateUrl: 'view/owner_edit.html',
         controller: 'OwnerEditController'
-    })
+    }).state('tag', {
+        url: '/tags',
+        templateUrl: 'view/tag_all.html',
+        controller: 'TagListController'
+    }).state('newTag', {
+        url: '/tag/new',
+        templateUrl: 'view/tag_new.html',
+        controller: 'TagCreateController'
+    }).state('editTag', {
+        url: '/tag/:id/edit',
+        templateUrl: 'view/tag_edit.html',
+        controller: 'TagEditController'
+    });
+
 }).run(function($state) {
     $state.go('project');
 });

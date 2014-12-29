@@ -49,9 +49,17 @@
 						<a href="#/owners" class="list-group-item">
 							<span class="glyphicon glyphicon-chevron-right"></span> All owners
 						</a>
-						<!--<a href="#/project/{{project.id}}/tasks" class="list-group-item" ng-repeat="project in projects | orderBy:'name'">
-							<span class="glyphicon glyphicon-chevron-right"></span> {{project.name}}
-						</a>-->
+					</div>
+				</ul>
+				<ul class="list-group" ng-controller="TagListController">
+					<a href="#tags" class="list-group-item" data-toggle="collapse">
+						<span class="glyphicon glyphicon-briefcase"></span> Tags <i class="caret"></i>
+						<span class="badge">{{tags.length}}</span>
+					</a>
+					<div id="tags">
+						<a href="#/tags" class="list-group-item">
+							<span class="glyphicon glyphicon-chevron-right"></span> All tags
+						</a>
 					</div>
 				</ul>
 			</div>
