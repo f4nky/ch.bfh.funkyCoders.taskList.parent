@@ -9,18 +9,25 @@
                     <tr>
                         <th class="col-xs-1">#</th>
                         <th class="col-xs-3">Name</th>
-                        <th class="col-xs-2">Estimated costs</th>
+                        <th class="col-xs-2">Owner</th>
+                        <th class="col-xs-2 text-right">Estimated costs</th>
                         <th class="col-xs-1">Start date</th>
-                        <th class="col-xs-2">End date</th>
+                        <th class="col-xs-1">End date</th>
+                        <th class="col-xs-2"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="col-xs-1">{{project.id}}</td>
-                        <td class="col-xs-2">{{project.name}}</a></td>
-                        <td class="col-xs-2">{{project.costs | currency:'CHF ':0}}</td>
-                        <td class="col-xs-2">{{project.startDate | date:'dd.MM.yyyy'}}</td>
-                        <td class="col-xs-4">{{project.endDate | date:'dd.MM.yyyy'}}</td>
+                        <td>{{project.id}}</td>
+                        <td>{{project.name}}</a></td>
+                        <td>{{project.projectOwner.name}}</td>
+                        <td class="text-right">{{project.costs | currency:'CHF ':0}}</td>
+                        <td>{{project.startDate | date:'dd.MM.yyyy'}}</td>
+                        <td>{{project.endDate | date:'dd.MM.yyyy'}}</td>
+                        <td>
+                            <button type="button" class="btn btn-xs btn-primary" ui-sref="editProject({id:project.id})">Edit</button>
+                            <button type="button" class="btn btn-xs btn-danger" ng-click="deleteProject(project)" ng-disabled="project.tasks.length">Delete</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -31,7 +38,7 @@
     </div>
     <div class="row">
         <div class="col-xs-4">
-            <button type="button" class="btn btn-success" ui-sref="newTask({id: project.id})">New Task</button>
+            <button type="button" class="btn btn-primary" ui-sref="newTask({id: project.id})">New Task</button>
         </div>
         <div class="col-xs-6" ng-show="project.tasks.length">
             <div class="input-group">
@@ -52,8 +59,9 @@
                 <tr>
                     <th></th>
                     <th class="col-xs-1"><a href="#" ng-click="orderByField='id'; reverseSort=!reverseSort">#</a></th>
-                    <th class="col-xs-2"><a href="#" ng-click="orderByField='name'; reverseSort=!reverseSort">Name</a></th>
-                    <th class="col-xs-3"><a href="#" ng-click="orderByField='description'; reverseSort=!reverseSort">Description</a></th>
+                    <th class="col-xs-3"><a href="#" ng-click="orderByField='name'; reverseSort=!reverseSort">Name</a></th>
+                    <th class="col-xs-2"><a href="#" ng-click="orderByField='taskOwner'"; reverseSort=!reverseSort">Owner</a></th>
+                    <!--<th class="col-xs-3"><a href="#" ng-click="orderByField='description'; reverseSort=!reverseSort">Description</a></th>-->
                     <th class="col-xs-2">Tags</th>
                     <th class="col-xs-1"><a href="#" ng-click="orderByField='startDate'; reverseSort=!reverseSort">Start date</a></th>
                     <th class="col-xs-1"><a href="#" ng-click="orderByField='endDate'; reverseSort=!reverseSort">End date</a></th>
@@ -65,7 +73,8 @@
                     <td><input type="checkbox" ng-controller="StatusController" class="checkthis" ng-checked="task.status=='DONE'" ng-click="task.status=='DONE'?setStatus(task.id,'OPEN'):setStatus(task.id,'DONE')" /></td>
                     <td>{{task.id}}</td>
                     <td>{{task.name}}</td>
-                    <td>{{task.description}}</td>
+                    <td>{{task.taskOwner.name}}</td>
+                    <!--<td>{{task.description}}</td>-->
                     <td>
                         <span ng-repeat="tag in task.tags">{{tag.name}}</span>
                     </td>

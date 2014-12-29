@@ -5,10 +5,10 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Owner</label>
-    <div class="col-sm-10">
-        <select ng-controller="OwnerListController" ng-model="project.projectOwner" class="form-control">
-            <option ng-repeat="owner in owners">{{owner.name}} ({{owner.initials}})</option>
+    <label for="projectOwner" class="col-sm-2 control-label">Owner</label>
+    <div class="col-sm-10" ng-controller="OwnerListController">
+        <select ng-model="project.projectOwner" ng-options="owner.name for owner in owners | orderBy:'name' track by owner.id" class="form-control" id="projectOwner">
+            <option value=""></option>
         </select>
     </div>
 </div>
@@ -21,13 +21,13 @@
 <div class="form-group">
     <label for="startDate" class="col-sm-2 control-label">Start Date</label>
     <div class="col-sm-10">
-        <input type="text" ng-model="project.startDate" required class="form-control" id="startDate" placeholder="When does the project start?"/>
+        <input type="text" ng-model="project.startDate"  class="form-control" id="startDate" placeholder="When does the project start?"/>
     </div>
 </div>
 <div class="form-group">
     <label for="endDate" class="col-sm-2 control-label">End Date</label>
     <div class="col-sm-10">
-        <input type="text" ng-model="project.endDate" required class="form-control" id="endDate" placeholder="When does the project end?"/>
+        <input type="text" ng-model="project.endDate"  class="form-control" id="endDate" placeholder="When does the project end?"/>
     </div>
 </div>
 <div class="form-group">
