@@ -1,0 +1,43 @@
+<div class="container-fluid" ng-controller="SelectController">
+    <div class="row">
+        <h1 class="page-header">Owners</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-success" ui-sref="newOwner">New Owner</button>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group" ng-show="owners.length">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                <input type="text" class="form-control" ng-model="search" id="search" name="search" placeholder="Search" />
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="table-responsive">
+            <div ng-hide="owners.length">No owners. <a ui-sref="newOwner">Click</a> to create a new owner.</div>
+            <table class="table table-striped" ng-show="owners.length">
+                <thead>
+                <tr>
+                    <th class="col-xs-1"><a href="#" ng-click="orderByField='id'; reverseSort=!reverseSort">#</a></th>
+                    <th class="col-xs-6"><a href="#" ng-click="orderByField='name'; reverseSort=!reverseSort">Name</a></th>
+                    <th class="col-xs-2"><a href="#" ng-click="orderByField='initials'; reverseSort=!reverseSort">Initials</a></th>
+                    <th class="col-xs-3"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="owner in owners | filter:search | orderBy:orderByField:reverseSort">
+                    <td>{{owner.id}}</td>
+                    <td>{{owner.name}}</td>
+                    <td>{{owner.initials}}</td>
+                    <td>
+                        <button type="button" class="btn btn-xs btn-primary" ui-sref="editOwner({id:owner.id})">Edit</button>
+                        <button type="button" class="btn btn-xs btn-danger" ng-click="deletePerson(owner)">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

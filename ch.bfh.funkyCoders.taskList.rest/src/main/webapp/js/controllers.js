@@ -90,4 +90,33 @@ angular.module('tasklist.controllers', [])
         $scope.task = Task.get({ id: $stateParams.tid });
     };
     $scope.loadTask();
+})
+.controller('OwnerListController', function($scope, $state, popupService, $window, Person) {
+    $scope.owners = Person.query();
+    $scope.deletePerson = function(owner) {
+        if (popupService.showPopup('Really delete this?')) {
+            owner.$delete(function() {
+                $state.go($state.current, {}, {reload: true});
+            });
+        }
+    };
+})
+.controller('OwnerCreateController', function($scope, $state, $stateParams, Person) {
+    $scope.owner = new Person();
+    $scope.addPerson = function() {
+        $scope.owner.$save(function() {
+            $state.go('owners');
+        });
+    };
+})
+.controller('OwnerEditController', function($scope, $state, $stateParams, Person) {
+    $scope.updatePerson = function() {
+        $scope.owner.$update(function() {
+            $state.go('owners');
+        });
+    };
+    $scope.loadPerson = function() {
+        $scope.owner = Person.get({ id: $stateParams.id });
+    };
+    $scope.loadPerson();
 });

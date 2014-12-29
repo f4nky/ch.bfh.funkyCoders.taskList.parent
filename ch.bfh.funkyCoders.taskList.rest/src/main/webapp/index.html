@@ -40,6 +40,20 @@
 						</a>
 					</div>
 				</ul>
+				<ul class="list-group">
+					<a href="#owners" class="list-group-item" data-toggle="collapse">
+						<span class="glyphicon glyphicon-briefcase"></span> Owners <i class="caret"></i>
+						<!--<span class="badge">{{projects.length}}</span>-->
+					</a>
+					<div id="owners">
+						<a href="#/owners" class="list-group-item">
+							<span class="glyphicon glyphicon-chevron-right"></span> All owners
+						</a>
+						<!--<a href="#/project/{{project.id}}/tasks" class="list-group-item" ng-repeat="project in projects | orderBy:'name'">
+							<span class="glyphicon glyphicon-chevron-right"></span> {{project.name}}
+						</a>-->
+					</div>
+				</ul>
 			</div>
 			<div ui-view id="page-content-wrapper"></div>
 		</div>

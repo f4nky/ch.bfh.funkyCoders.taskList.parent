@@ -27,7 +27,19 @@ angular.module('tasklist').config(function($stateProvider) {
         url: '/project/:id/task/:tid/edit',
         templateUrl: 'view/task_edit.html',
         controller: 'TaskEditController'
-    });
+    }).state('owners', {
+        url: '/owners',
+        templateUrl: 'view/owner_all.html',
+        controller: 'OwnerListController'
+    }).state('newOwner', {
+        url: '/owner/new',
+        templateUrl: 'view/owner_new.html',
+        controller: 'OwnerCreateController'
+    }).state('editOwner', {
+        url: '/owner/:id/edit',
+        templateUrl: 'view/owner_edit.html',
+        controller: 'OwnerEditController'
+    })
 }).run(function($state) {
     $state.go('project');
 });

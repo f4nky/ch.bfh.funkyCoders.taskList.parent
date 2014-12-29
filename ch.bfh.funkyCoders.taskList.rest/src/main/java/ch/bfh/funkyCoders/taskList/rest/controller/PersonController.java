@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import java.util.Collection;
 
 @Controller
-@RequestMapping("/person")
+@RequestMapping("/owners")
 public class PersonController {
 
 	@Inject
