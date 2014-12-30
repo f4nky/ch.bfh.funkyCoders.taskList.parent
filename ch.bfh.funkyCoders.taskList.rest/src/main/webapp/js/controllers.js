@@ -1,16 +1,5 @@
-angular.module('tasklist.controllers', [])
+angular.module('tasklist.controllers', ['ui.multiselect'])
 .controller('SelectController', function($scope) {
-    $scope.sortOptions = [
-        { id: 'id', name: 'Order by #' },
-        { id: 'name', name: 'Order by name' },
-        { id: 'description', name: 'Order by desc.' },
-        { id: '"end date"', name: 'Order by date' }
-    ];
-    $scope.sortProjects = [
-        { id: 'id', name: 'Order by #' },
-        { id: 'name', name: 'Order by name' },
-        { id: '"end date"', name: 'Order by date' }
-    ];
     $scope.filterOptions = [
         { id: {status:"!DELETED"}, name: 'Show all tasks' },
         { id: {status:"OPEN"}, name: 'Open tasks' },
@@ -69,8 +58,9 @@ angular.module('tasklist.controllers', [])
         }
     };
 })
-.controller('TaskCreateController', function($scope, $state, $stateParams, Project, Task) {
+.controller('TaskCreateController', function($scope, $state, $stateParams, Project, Task, Tag) {
     $scope.project = Project.get({ id: $stateParams.id });
+    $scope.tags = Tag.query();
     $scope.task = new Task();
     $scope.addTask = function() {
         $scope.project.tasks.push($scope.task);

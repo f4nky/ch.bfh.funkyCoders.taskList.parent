@@ -76,7 +76,7 @@
                     <td>{{task.taskOwner.name}}</td>
                     <!--<td>{{task.description}}</td>-->
                     <td>
-                        <span ng-repeat="tag in task.tags">{{tag.name}}</span>
+                        <span ng-repeat="tag in task.tags">{{tag.name}}<span ng-if="!$last">, </span></span>
                     </td>
                     <td>{{task.startDate | date:'dd.MM.yyyy'}}</td>
                     <td>{{task.endDate | date:'dd.MM.yyyy'}}</td>
