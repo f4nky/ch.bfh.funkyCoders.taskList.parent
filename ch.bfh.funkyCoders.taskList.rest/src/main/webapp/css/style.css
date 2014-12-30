@@ -118,6 +118,18 @@ a.list-group-item:hover {
 	padding-top: 10px;
 }
 
+input[required].ng-pristine {
+	border-color: #ac4344;
+}
+
+input.ng-invalid.ng-dirty {
+	border-color: #ac4344;
+}
+
+input.ng-valid.ng-dirty {
+	border-color: #377644;
+}
+
 /* === MOBILE STYLES === */
 @media(min-width:768px) {
 	#wrapper {
