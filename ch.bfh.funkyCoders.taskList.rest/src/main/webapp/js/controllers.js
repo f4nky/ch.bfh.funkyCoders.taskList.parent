@@ -114,7 +114,9 @@ angular.module('tasklist.controllers', ['ui.multiselect'])
     $scope.tags = Tag.query();
     $scope.deleteTag = function(tag) {
         if (popupService.showPopup('Really delete this?')) {
-            tag.$delete();
+            tag.$delete(function() {
+                $state.go($state.current, {}, {reload: true});
+            });
         }
     };
 })
