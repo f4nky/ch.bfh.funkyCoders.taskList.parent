@@ -118,10 +118,6 @@ a.list-group-item:hover {
 	padding-top: 10px;
 }
 
-input[required].ng-pristine {
-	border-color: #ac4344;
-}
-
 input.ng-invalid.ng-dirty {
 	border-color: #ac4344;
 }

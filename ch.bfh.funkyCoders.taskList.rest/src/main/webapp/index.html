@@ -20,18 +20,18 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">TaskList</a>
+					<a class="navbar-brand" href="http://localhost:8080">TaskList</a>
 				</div>
 			</div>
 		</nav>
 		<div id="wrapper">
 			<div id="sidebar-wrapper">
 				<ul class="list-group" ng-controller="ProjectsController">
-					<a href="#projects" class="list-group-item" data-toggle="collapse">
+					<a href="#projectNav" class="list-group-item" data-toggle="collapse">
 						<span class="glyphicon glyphicon-briefcase"></span> Projects <i class="caret"></i>
 						<span class="badge">{{projects.length}}</span>
 					</a>
-					<div id="projects">
+					<div id="projectNav">
 						<a href="#/projects" class="list-group-item">
 							<span class="glyphicon glyphicon-chevron-right"></span> All projects
 						</a>
@@ -41,22 +41,22 @@
 					</div>
 				</ul>
 				<ul class="list-group" ng-controller="OwnerListController">
-					<a href="#owners" class="list-group-item" data-toggle="collapse">
+					<a href="#ownerNav" class="list-group-item" data-toggle="collapse">
 						<span class="glyphicon glyphicon-briefcase"></span> Owners <i class="caret"></i>
 						<span class="badge">{{owners.length}}</span>
 					</a>
-					<div id="owners">
+					<div id="ownerNav">
 						<a href="#/owners" class="list-group-item">
 							<span class="glyphicon glyphicon-chevron-right"></span> All owners
 						</a>
 					</div>
 				</ul>
 				<ul class="list-group" ng-controller="TagListController">
-					<a href="#tags" class="list-group-item" data-toggle="collapse">
+					<a href="#tagNav" class="list-group-item" data-toggle="collapse">
 						<span class="glyphicon glyphicon-briefcase"></span> Tags <i class="caret"></i>
 						<span class="badge">{{tags.length}}</span>
 					</a>
-					<div id="tags">
+					<div id="tagNav">
 						<a href="#/tags" class="list-group-item">
 							<span class="glyphicon glyphicon-chevron-right"></span> All tags
 						</a>
