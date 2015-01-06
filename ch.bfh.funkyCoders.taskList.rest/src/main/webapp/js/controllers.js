@@ -62,6 +62,7 @@ angular.module('tasklist.controllers', ['ui.multiselect'])
     $scope.project = Project.get({ id: $stateParams.id });
     $scope.tags = Tag.query();
     $scope.task = new Task();
+    $scope.task.status = "OPEN";
     $scope.addTask = function() {
         $scope.project.tasks.push($scope.task);
         $scope.project.$update(function() {

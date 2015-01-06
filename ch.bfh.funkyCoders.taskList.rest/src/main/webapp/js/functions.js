@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	toggleNavSidebar();
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 });
 
 $(window).on('resize', function() {

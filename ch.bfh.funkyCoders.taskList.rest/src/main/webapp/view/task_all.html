@@ -72,9 +72,8 @@
                 <tr ng-repeat="task in project.tasks | orderBy:orderByField:reverseSort | filter:search | filter:status">
                     <td><input type="checkbox" ng-controller="StatusController" class="checkthis" ng-checked="task.status=='DONE'" ng-click="task.status=='DONE'?setStatus(task.id,'OPEN'):setStatus(task.id,'DONE')" /></td>
                     <td>{{task.id}}</td>
-                    <td>{{task.name}}</td>
+                    <td>{{task.name}}&nbsp;&nbsp;<span ng-show="task.description"><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="{{task.description}}"></span></span></td>
                     <td>{{task.taskOwner.name}}</td>
-                    <!--<td>{{task.description}}</td>-->
                     <td>
                         <span ng-repeat="tag in task.tags | orderBy:'name'">{{tag.name}}<span ng-if="!$last">, </span></span>
                     </td>

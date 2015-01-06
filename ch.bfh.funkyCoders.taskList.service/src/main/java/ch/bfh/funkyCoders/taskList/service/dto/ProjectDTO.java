@@ -2,6 +2,7 @@ package ch.bfh.funkyCoders.taskList.service.dto;
 
 import ch.bfh.funkyCoders.taskList.model.Person;
 import ch.bfh.funkyCoders.taskList.model.Task;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -42,6 +43,7 @@ public class ProjectDTO {
         this.costs = costs;
     }
 
+    @JsonFormat(pattern = "dd.MM.yy")
     private Date startDate;
 
     public Date getStartDate() {
@@ -52,6 +54,7 @@ public class ProjectDTO {
         this.startDate = startDate;
     }
 
+    @JsonFormat(pattern = "dd.MM.yy")
     private Date endDate;
 
     public Date getEndDate() {
